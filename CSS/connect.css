@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{ 
+    box-sizing: border-box;
+}
+
+/* DISPLAY DROITE ET GAUCHE */
+
+body{
+    display: flex;
+}
+
+/* COTE GAUCHE  */
+
+.cote_gauche{
+    background-color: #10192C;
+    color: #F5F7F7;
+    font-family: "Inter";
+    max-width: 100%;
+}
+
+
+/* TITRE */
+
+.Titre{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 100px auto;
+    grid-template-areas:
+    "img h1"
+    "p p";
+    margin-top: 200px;
+
+}
+
+.Titre img{
+    grid-area: img;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.Titre h1{
+    grid-area: h1;
+}
+
+.Titre h1 span{
+    color: #2E79FD;
+}
+
+.Titre p{
+    grid-area: p;
+    font-size: 120%;
+}
+
+/* LOGO PRINCIPALE */
+
+.logo{
+    display: flex;
+    justify-content: center;
+}
+
+#logo{
+    height: 500px;
+    width: auto;
+}
+
+/* LOGO PRESENTATION */
+
+.Presentation img{
+    height: 25px;
+}
+
+/* COTE DROIT */
+
+.cote_droit{
+    max-width: 100%;
+}
