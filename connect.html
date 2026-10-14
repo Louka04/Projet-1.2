@@ -1,12 +1,77 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <title>Titre de la page</title>
-    <link rel="stylesheet" href="./CSS/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="connect.css">
+    <link rel="icon" href="./img/Icon.png">
+    <title>TaskHub Connection</title>
 </head>
 <body>
-    <h1>Bienvenue sur ma page</h1>
-    <p>Ceci est un paragraphe de base en HTML.</p>
+    <!-- Cote gauche présentation -->
+    
+    <section class="cote_gauche">
+        <div class="Titre">
+            <img src="./img/coche bleu.png" alt="Choche bleu">
+            <h1 class="taskhub">Task<span>Hub</span></h1>
+            <p>Organisez vos tâches, simplifiez votre contidien !</p>
+        </div>
+    
+        <div class="Logo_principal">
+            <img src="./img/Interface connection.png" alt="Logo présentation">
+        </div>
+
+        <div class="Présentation">
+            <span>
+                <img src="./img/Choche bleu ronde.png" alt="Choche bleu ronde">
+                <h4>Gérez</h4>
+                <p>vos tâches facilement</p>
+            </span>
+
+            <span>
+                <img src="./img/Filtre.png" alt="Filtre">
+                <h4>Organisez</h4>
+                <p>par catégories et priorités</p>
+            </span>
+
+            <span>
+                <img src="./img/signal.png" alt="Signal">
+                <h4>Progressez</h4>
+                <p>jour après jour</p>
+            </span>
+
+        </div>
+
+    </section>
+
+    <!-- Cote gauche connection -->
+
+    <section class="cote_droit">
+
+        <div class="titre">
+            <h3>Se connceter à</h2>
+            <h2 class="taskhub">Task<span>Hub</span></h2> <br>
+            <p>Heureux de vous revoir !</p>
+        </div>
+
+        <!-- FORMULAIRE CONNECTION -->
+
+        <form action="" class="Formulaire">
+            <p>Adresse e-mail</p>
+                <div>
+                    <img src="./img/Mail.png" alt="logo mail">
+                    <input type="text" name="mail" id="mail" placeholder="exmple@domaine.fr">
+                </div>
+            <p>Mot de passe</p>
+                <div>
+                    <img src="./img/Cadenat.png" alt="logo mdp">
+                    <input type="text" name="mdp" id="mdp" placeholder="Mot de passe">
+                </div>
+                <div class="connect">
+                    <input type="submit" name="se connecter" id="connect" placeholder="Se connecter">
+                    <img src="./img/Flèche droite connect.png" alt="flèche connect">
+                </div>
+        </form>
+    </section>
 </body>
 </html>
