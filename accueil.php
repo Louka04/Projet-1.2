@@ -110,7 +110,6 @@ require_once "connexion.php";
 </section>
 
 
-
         <!-- TABLEAU DE BORD -->
 
         <section class="dashboard">
