@@ -103,3 +103,61 @@ main {
     margin: 0 0 5px;
     font-size: 32px;
 }
+
+.presentation {
+    margin: 0;
+    color: #536b90;
+    font-size : 16px;
+}
+
+/* BOUTONS */
+
+button {
+    padding: 10px 14px ;
+    border: 1px solid #dce7f6;
+    border-radius: 6px;
+    background-color:#eaf3ff;
+    color: #245eae;
+    cursor: pointer;
+}
+
+button :hover {
+    background-color: #d8e9ff;
+}
+
+.presentation button {
+    padding : 10px 14px ; 
+    border-color: #2875ff;
+    background-color: #2875ff;
+    color : #ffffff;
+}
+
+.presentation button:hover{
+    background-color:#1765ed;
+}
+
+/* TABLEAU DE BORD */
+
+.dashboard {
+    margin-bottom: 28px;
+}
+
+.dashboard h2 {
+    margin: 0 0 16px;
+    font-size : 21 px;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap; /*définit si les éléments flexibles sont forcés sur une seule ligne*/
+    gap: 16px; /*crée des espace entre les éléments d’un conteneur*/
+}
+
+.card {
+    flex: 1;
+    min-width: 150px;
+    padding: 20px;
+    border: 1px solid #dce7f6;
+    border-radius: 8px;
+    background-color: white;
+}
