@@ -161,3 +161,28 @@ button :hover {
     border-radius: 8px;
     background-color: white;
 }
+
+.card h3 {
+    margin: 0 0 12px;
+    color: #536b90;
+    font-size: 14 px;
+    font-weight: normal;
+}
+
+.card p {  /*ellement dans la card paragraphe*/
+    margin:0;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/*Première carte : TOTAL */
+
+.card:nth-child(1) {
+    background-color:#f8fbff;
+    border-color: #6aa8f8;
+}
+
+
+
+
+
