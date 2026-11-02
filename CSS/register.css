@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --color_background_1: #242e45;
+  --color_background_2: #192032;
+  --color_form: rgb(18, 30, 49);
+  --color_button: #165cf9;
+  --color_HUB: #2e79fd;
+  --color_text: rgb(245, 247, 235);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color_background_1);
+  background: radial-gradient(
+    circle,
+    var(--color_background_2) 50%,
+    var(--color_background_1) 100%
+  );
+  font-family: "Inter";
+  color: var(--color_text);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hub {
+  color: var(--color_HUB);
+}
+
+.form_container {
+  border: 2px solid var(--color_HUB);
+  box-shadow: 0 0 5px 1px var(--color_button);
+  min-height: 450px;
+  min-width: 400px;
+  padding: 30px;
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+  background-color: var(--color_background_1);
+  border-radius: 3px;
+}
+
+/* LOGO TASK HUB */
+
+.title_container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  grid-template-areas:
+    "img h1"
+    "p p";
+}
+
+.title_container img {
+  grid-area: img;
+  width: 50px;
+  height: auto;
+}
+
+.title_container h1 {
+  grid-area: h1;
+}
+
+.title_container p {
+  grid-area: p;
+}
+
+/* FORMULAIRE */
+
+.form {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form div {
+  margin-top: 20px;
+}
+
+.form div div {
+  border: 1px solid rgba(255, 255, 255, 0.255);
+  background-color: var(--color_form);
+  color: var(--color_text);
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+  min-width: 300px;
+}
+
+.form div input {
+  border: none;
+  color: var(--color_text);
+  background-color: var(--color_background_2);
+}
+
+.form div div img {
+  width: 18px;
+  height: 18px;
+}
+
+/* CREE UN COMPTE */
+
+.sign_container {
+  display: flex;
+  justify-content: center;
+}
+
+#sign_in {
+  min-width: 250px;
+  min-height: 40px;
+  margin-top: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--color_button);
+  color: var(--color_text);
+}
+
+#sign_in:hover {
+  transform: scale(110%);
+  transition: 50ms;
+  cursor: pointer;
+}

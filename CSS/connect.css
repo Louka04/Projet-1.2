@@ -1,77 +1,286 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
-*{ 
-    box-sizing: border-box;
+html {
+  font-size: 67%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 /* DISPLAY DROITE ET GAUCHE */
-
-body{
-    display: flex;
+body {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0;
+  min-height: 100vh;
 }
 
-/* COTE GAUCHE  */
-
-.cote_gauche{
-    background-color: #10192C;
-    color: #F5F7F7;
-    font-family: "Inter";
-    max-width: 100%;
+/* COTE GAUCHE */
+.cote_gauche {
+  background-color: #10192c;
+  background: radial-gradient(
+    circle 469px at top left,
+    #242e45,
+    #1b2335,
+    #192032,
+    #0a111e
+  );
+  color: #f5f7f7;
+  font-family: "Inter";
+  flex: 1;
 }
-
 
 /* TITRE */
-
-.Titre{
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 100px auto;
-    grid-template-areas:
+.Titre {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 67px auto;
+  grid-template-areas:
     "img h1"
     "p p";
-    margin-top: 200px;
-
+  margin-top: 134px;
 }
 
-.Titre img{
-    grid-area: img;
-    max-width: 80px;
-    max-height: 80px;
+.Titre img {
+  grid-area: img;
+  max-width: 54px;
+  max-height: 54px;
 }
 
-.Titre h1{
-    grid-area: h1;
+.Titre h1 {
+  grid-area: h1;
 }
 
-.Titre h1 span{
-    color: #2E79FD;
+.hub {
+  color: #2e79fd;
 }
 
-.Titre p{
-    grid-area: p;
-    font-size: 120%;
+.Titre p {
+  grid-area: p;
+  font-size: 120%;
 }
 
-/* LOGO PRINCIPALE */
-
-.logo{
-    display: flex;
-    justify-content: center;
+/* LOGO PRINCIPAL */
+.logo {
+  display: flex;
+  justify-content: center;
 }
 
-#logo{
-    height: 500px;
-    width: auto;
+#logo {
+  height: 402px;
+  width: auto;
 }
 
 /* LOGO PRESENTATION */
+.Presentation {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+  margin-top: 67px;
+}
 
-.Presentation img{
-    height: 25px;
+.Presentation div {
+  text-align: center;
+}
+
+.Presentation img {
+  height: 23px;
+}
+
+#img1 {
+  text-align: center;
 }
 
 /* COTE DROIT */
+.cote_droit {
+  flex: 1;
+  background-color: #0c1525;
+  box-shadow: 13px 0px 13px 4px;
+  font-family: "Inter";
+  color: #f5f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.cote_droit{
-    max-width: 100%;
+.cadre_formulaire {
+  border: 1.3px solid #165cf9;
+  border-radius: 5px;
+  box-shadow: 0 0 13px 4px rgb(30, 44, 69);
+  background-color: #121e31;
+  padding: 13px 17px;
+  margin-bottom: 20px;
+  width: 335px;
+  height: 369px;
+}
+
+/* TITRE DU FORMULAIRE */
+.cadre_formulaire .titre h3 {
+  margin-bottom: 0;
+}
+
+.cadre_formulaire .titre h2 {
+  margin: 0;
+}
+
+.cadre_formulaire .titre p {
+  margin: 0;
+  margin-bottom: 27px;
+  font-size: 1rem;
+  color: #f5f7f7c6;
+}
+
+/* FORMULAIRE */
+.Formulaire p {
+  font-size: 1rem;
+  margin-bottom: 3px;
+  margin-top: 10px;
+}
+
+.connect_container {
+  border: 1.3px solid #242e45;
+  border-radius: 3px;
+  background-color: rgb(24, 38, 62);
+  display: flex;
+  gap: 7px;
+  padding: 7px;
+}
+
+.connect_container input {
+  border: none;
+  background-color: rgb(24, 38, 62);
+  color: #f5f7f7;
+}
+
+.connect_container input::placeholder {
+  color: #ffffffa5;
+  font-size: 0.8rem;
+}
+
+.connect_container img {
+  width: 18px;
+  height: 18px;
+}
+
+#connect {
+  border: none;
+  background-color: #165cf9;
+  color: #f5f7f7;
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 3px;
+  margin-top: 17px;
+  padding: 7px;
+  background-color: #165cf9;
+  display: flex;
+  justify-content: center;
+}
+
+#connect::-ms-value {
+  font-size: 1rem;
+}
+
+#connect:hover {
+  cursor: pointer;
+  transform: scale(110%);
+  transition: 50ms;
+}
+
+.sign {
+  margin-top: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.sign p {
+  margin: 0;
+}
+
+#sign_lien {
+  color: #5f92ff;
+}
+
+/* RESPONSIVE PC */
+@media screen and (max-width: 940px) {
+  body {
+    flex-direction: column;
+  }
+
+  .cote_gauche {
+    max-width: 100vw;
+  }
+
+  .cote_droit {
+    max-width: 100vw;
+    min-height: 938px;
+    box-shadow: 0px 13px 13px 11px;
+  }
+
+  .cadre_formulaire {
+    margin-top: 67px;
+  }
+
+  .Presentation {
+    margin-bottom: 67px;
+  }
+
+  .Titre {
+    margin-top: 80px;
+  }
+}
+
+/* RESPONSIVE TELEPHONE */
+@media screen and (max-width: 600px) {
+  body {
+    background-color: #0c1525;
+  }
+
+  .cote_droit {
+    min-height: 268px;
+    box-shadow: 0 0 0 0;
+  }
+
+  .cote_gauche {
+    background: #0c1525;
+    max-height: 67px;
+  }
+
+  .Titre {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: 54px auto;
+    align-items: center;
+  }
+
+  .Titre img {
+    max-width: 44px;
+    max-height: 44px;
+  }
+
+  .Titre p {
+    display: none;
+  }
+
+  .Presentation {
+    display: none;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .cadre_formulaire {
+    margin-top: 0px;
+    max-width: 335px;
+    max-height: 369px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .cadre_formulaire {
+    margin-top: 34px;
+  }
 }
