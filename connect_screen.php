@@ -1,3 +1,41 @@
+<?php
+
+session_start();
+
+require_once "connexion.php";
+
+$erreurs = [];
+$mail = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $mail = trim($_POST["mail"] ?? "");
+    $password = $_POST["password"] ?? "";
+
+    if (empty($mail)) {
+        $erreurs[] = "Veuillez saisir votre adresse mail";
+    }
+    if (empty($password)) {
+        $erreurs[] = "Veuillez saisir votre mot de passe";
+    }
+
+    if (empty($erreurs)) {
+        $requete = $pdo->prepare("SELECT * FROM utilisateurs WHERE mail = :mail");
+        $requete->execute(["mail" => $mail]);
+        $utilisateur = $requete->fetch(PDO::FETCH_ASSOC);
+
+        if ($utilisateur === false || !password_verify($password, $utilisateur["password"])) {
+            $erreurs[] = "Mail ou mot de passe incorrect.";
+        } else {
+            session_regenerate_id(true);
+            $_SESSION["user_id"] = $utilisateur["id"];
+            $_SESSION["user_name"] = $utilisateur["user_name"];
+            header("Location: accueil.php");
+            exit;
+        }
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -62,28 +100,35 @@
                 </div>
 
                 <!-- FORMULAIRE CONNECTION -->
-
-                <form action="" class="Formulaire">
+                <?php if (!empty($erreurs)) : ?>
+                    <div class="erreur">
+                        <?php foreach ($erreurs as $erreur): ?>
+                            <p><?= htmlspecialchars($erreur) ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <form action="" method="post" class="Formulaire">
                     <p>Adresse e-mail</p>
                     <div class="connect_container">
                         <img src="./img/Mail.png" alt="logo mail">
-                        <input type="text" name="mail" id="mail" placeholder="exmple@domaine.fr">
+                        <input type="email" name="mail" id="mail" placeholder="exmple@domaine.fr" value="<?= htmlspecialchars($mail) ?>">
                     </div>
                     <p>Mot de passe</p>
                     <div class="connect_container">
                         <img src="./img/Cadenat.png" alt="logo mdp">
-                        <input type="text" name="mdp" id="mdp" placeholder="Mot de passe">
+                        <input type="password" name="password" id="mdp" placeholder="Mot de passe">
                     </div>
                     <div class="connect">
-                        <input type="submit" class="connect_div" name="se connecter" id="connect" value="Se connecter &#10132;">
+                        <input type="submit" class="connect_div" name="connect" id="connect" value="Se connecter &#10132;">
                     </div>
                 </form>
             </div>
 
             <!-- RREDIRECTION VERS PAGE CREATION COMPTE -->
             <div class="sign">
+                <p id="separation">ou</p>
                 <p>Pas de compte ?</p>
-                <p><a href="" id="sign_lien">Inscrivez-vous</a> !</p>
+                <p><a href="./register.php" id="sign_lien">Inscrivez-vous</a> !</p>
             </div>
         </div>
 

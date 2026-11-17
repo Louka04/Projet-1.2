@@ -112,7 +112,7 @@ body {
   padding: 13px 17px;
   margin-bottom: 20px;
   width: 335px;
-  height: 369px;
+  min-height: 380px;
 }
 
 /* TITRE DU FORMULAIRE */
@@ -158,9 +158,24 @@ body {
   font-size: 0.8rem;
 }
 
+.connect_container input:focus {
+  outline: none;
+  border-bottom: 2px solid #4a90e2;
+}
+
 .connect_container img {
   width: 18px;
   height: 18px;
+}
+
+.erreur {
+  margin-top: 10px;
+  color: rgb(228, 0, 0);
+}
+
+.erreur p {
+  margin: 0;
+  margin-bottom: 5px;
 }
 
 #connect {
@@ -199,6 +214,24 @@ body {
   margin: 0;
 }
 
+#separation {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+#separation::before,
+#separation::after {
+  display: block;
+  content: "";
+  background-color: #165cf9;
+  min-width: 120px;
+  height: 2px;
+  flex-shrink: 1;
+}
+
 #sign_lien {
   color: #5f92ff;
 }
@@ -220,6 +253,7 @@ body {
   }
 
   .cadre_formulaire {
+    min-height: 380px;
     margin-top: 67px;
   }
 

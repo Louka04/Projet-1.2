@@ -74,6 +74,11 @@ body {
 
 /* FORMULAIRE */
 
+.erreur {
+  margin-top: 30px;
+  color: rgb(228, 0, 0);
+}
+
 .form {
   margin-top: 35px;
   display: flex;
@@ -102,6 +107,11 @@ body {
   background-color: var(--color_background_2);
 }
 
+.form_content:focus {
+  outline: none;
+  border-bottom: 2px solid var(--color_HUB);
+}
+
 .form div div img {
   width: 18px;
   height: 18px;
@@ -117,7 +127,7 @@ body {
 #sign_in {
   min-width: 250px;
   min-height: 40px;
-  margin-top: 30px;
+  margin-top: 10px;
   border-radius: 5px;
   border: none;
   background-color: var(--color_button);
