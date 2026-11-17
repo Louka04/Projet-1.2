@@ -182,6 +182,60 @@ button :hover {
     border-color: #6aa8f8;
 }
 
+/* Deuxième carte : TERMINÉES */
+
+.card:nth-child(2) {
+    background-color: #e8f8f0;
+    border-color: #bcebd5;
+}
+
+.card:nth-child(2) h3 {
+    color: #08794f;
+}
+
+/* Troisième carte : RESTANTES */
+
+.card:nth-child(3) {
+    background-color: #eaf3ff;
+    border-color: #c4dcff;
+}
+
+.card:nth-child(3) h3 {
+    color: #2264d1;
+}
+
+/* Quatrième carte : PROGRESSION */
+
+.card:nth-child(4) {
+    background-color: #f3eeff;
+    border-color: #ded0ff;
+}
+
+.card:nth-child(4) h3 {
+    color: #7540d6;
+}
+
+/* RECHERCHE ET FILTRES */
+
+.filters {
+    padding: 22px;
+    border: 1 px solid #e2ecf9
+    border-bottom none;
+    border-radius: 8px 8px 0 0;
+    background-color: white;
+}
+
+.filters h2 {
+    margin: 0 0 18px;
+    font-size: 21px;
+}
+
+.filters-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10 px;
+}
+
 
 
 
