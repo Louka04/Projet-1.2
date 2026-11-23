@@ -236,6 +236,82 @@ button :hover {
     gap: 10 px;
 }
 
+/* LISTE DES TÂCHES */
+
+.tasks {
+    padding: 0 22px 12px;
+    border: 1px solid #e2ecf9;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    background-color: white;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid #edf2fa;
+}
+
+.task h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+}
+
+.task p {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background-color: #eaf3ff;
+    color: #2264d1;
+    font-size: 12px;
+}
+
+/* La deuxième tâche appartient à la catégorie Travail */
+
+.task:nth-child(2) p {
+    background-color: #f2ecff;
+    color: #7540d6;
+}
+
+/* ACTIONS DES TÂCHES */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.actions button {
+    padding: 8px 11px;
+    font-size: 12px;
+}
+
+/* Bouton Terminer */
+
+.actions button:nth-child(1) {
+    border-color: #c4dcff;
+    background-color: #eaf3ff;
+    color: #2264d1;
+}
+
+.actions button:nth-child(1):hover {
+    background-color: #d8e9ff;
+}
+
+/* HISTORIQUE */
+
+.history {
+    margin-top: 28px;
+    padding: 22px;
+    border: 1px solid #e2ecf9;
+    border-radius: 8px;
+    background-color: white;
+}
+
 
 
 
