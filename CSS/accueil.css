@@ -312,6 +312,79 @@ button :hover {
     background-color: white;
 }
 
+.history h2 {
+    margin : 0 0 8px;
+    font-size : 21px; 
+}
+
+.history-description {
+    margin: 0 0 20px;
+    color: #536b90;
+    font-size: 14px;
+}
+
+.history-description {
+    margin: 0 0 20px;
+    color: #536b90;
+    font-size: 14px;
+}
+
+.history-task {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 0;
+    border-top: 1px solid #edf2fa;
+}
+
+.history-check {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #0aad72;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 28px;
+}
+
+.history-details {
+    flex: 1;
+}
+
+.history-details h3 {
+    margin: 0 0 8px;
+    color: #536b90;
+    font-size: 14px;
+    text-decoration: line-through;
+}
+
+.history-category {
+    display: inline-block;
+    margin: 0 0 8px;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background-color: #e6faf2;
+    color: #08794f;
+    font-size: 12px;
+}
+
+.history-date {
+    margin: 0;
+    color: #536b90;
+    font-size: 12px;
+}
+
+.history-status {
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: #e6faf2;
+    color: #08794f;
+    font-size: 12px;
+}
+
+
 
 
 
