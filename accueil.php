@@ -1,6 +1,14 @@
 <?php
 require_once "connexion.php";
+
+$requete = $pdo->query("SELECT * FROM taches WHERE statut = 'en_cours'");
+$taches = $requete->fetchAll();
+
+$requete = $pdo->query("SELECT * FROM taches WHERE statut = 'terminee'");
+$tachesTerminees = $requete->fetchAll();
+
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -118,55 +126,49 @@ require_once "connexion.php";
         </section>
 
         <!-- LISTE DES TACHES -->
+
         <section class="tasks">
 
-            <article class="task">
-                <div>
-                    <h3>Finaliser le projet TASK-HUB</h3>
-                    <p>📚 Études</p>
-                </div>
+    <?php foreach ($taches as $tache) { ?>
+        <article class="task">
+            <div>
+                <h3><?= htmlspecialchars ($tache["titre"]) ?></h3>
+                <p><?= htmlspecialchars ($tache["categorie"]) ?></p>
+            </div>
 
-                <div class="actions">
-                    <button>Terminer</button>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
-            </article>
+            <div class="actions">
+                <button onclick="if (confirm('Terminer cette tâche ?')) 
+                { location.href='terminer_tache.php?id=<?= $tache["id"] ?>' }">Terminer</button>
+                <button>Modifier</button>
+                <button onclick="if (confirm('Supprimer cette tâche ?')) 
+                { location.href='supprimer_tache.php?id=<?= $tache["id"] ?>' }">Supprimer</button>
+            </div>
+        </article>
+    <?php } ?>
 
-            <article class="task">
-                <div>
-                    <h3>Créer le dépôt GitHub</h3>
-                    <p>💼 Travail</p>
-                </div>
-
-                <div class="actions">
-                    <button>Terminer</button>
-                    <button>Modifier</button>
-                    <button>Supprimer</button>
-                </div>
-            </article>
-
-        </section>
+</section>
 
         <!-- HISTORIQUE DES TACHES TERMINEES -->
         <section class="history">
             <h2>Historique</h2>
             <p class="history-description">Retrouvez ici vos tâches terminées.</p>
 
+            <?php foreach ($tachesTerminees as $tache) { ?>
             <article class="history-task">
                 <div class="history-check" aria-hidden="true">✓</div>
 
                 <div class="history-details">
-                    <h3>Faire les courses</h3>
-                    <p class="history-category">🏠 Personnel</p>
+                    <h3><?= htmlspecialchars($tache["titre"]) ?></h3>
+                    <p class="history-category"><?= htmlspecialchars($tache["categorie"]) ?></p>
                     <p class="history-date">
                         Terminée le
-                        <time datetime="2026-10-13T10:11">13 octobre 2026 à 10 h 11</time>
+                        <time datetime="2026-10-13T10:11"><?= date("d/m/Y à H:i", strtotime($tache["date_fin"])) ?></time>
                     </p>
                 </div>
 
                 <span class="history-status">Terminée</span>
             </article>
+            <?php } ?>
         </section>
 
     </main>
