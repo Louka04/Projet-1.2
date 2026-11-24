@@ -13,6 +13,7 @@ require_once "connexion.php";
     <title>TASK-HUB</title>
 
     <link rel="stylesheet" href="./css/accueil.css">
+    <link rel="icon" href="./img/Icon.png">
 </head>
 
 <body>
