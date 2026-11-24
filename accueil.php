@@ -162,7 +162,7 @@ $tachesTerminees = $requete->fetchAll();
                     <p class="history-category"><?= htmlspecialchars($tache["categorie"]) ?></p>
                     <p class="history-date">
                         Terminée le
-                        <time datetime="2026-10-13T10:11"><?= date("d/m/Y à H:i", strtotime($tache["date_fin"])) ?></time>
+                        <time><?= date("d/m/Y à H:i", strtotime($tache["date_fin"])) ?></time>
                     </p>
                 </div>
 
