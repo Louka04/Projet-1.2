@@ -17,6 +17,12 @@ if ($nbTotal > 0) {
     $progression = 0;
 }
 
+if (isset($_GET["modifier"])) {
+    $requete = $pdo->prepare("SELECT * FROM taches WHERE id = :id");
+    $requete->execute(["id" => $_GET["modifier"]]);
+    $tacheAModifier = $requete->fetch();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -88,6 +94,33 @@ if ($nbTotal > 0) {
             </form>
         </section>
 
+        <?php if (isset($tacheAModifier)) { ?>
+        <section id="formulaire-modifier">
+        <h2>Modifier la tâche</h2>
+        <form action="modifier_tache.php" method="POST">
+        <input type="hidden" name="id" value="<?= $tacheAModifier["id"] ?>">
+
+        <div>
+            <label for="titre-modifier">Nom de la tâche</label>
+            <input type="text" id="titre-modifier" name="titre" value="<?= htmlspecialchars($tacheAModifier["titre"]) ?>" maxlength="255" required>
+        </div>
+
+        <div>
+            <label for="categorie-modifier">Catégorie</label>
+            <select id="categorie-modifier" name="categorie" required>
+                <option value="Travail" <?php if ($tacheAModifier["categorie"] == "Travail") { echo "selected"; } ?>>Travail</option>
+                <option value="Études" <?php if ($tacheAModifier["categorie"] == "Études") { echo "selected"; } ?>>Études</option>
+                <option value="Personnel" <?php if ($tacheAModifier["categorie"] == "Personnel") { echo "selected"; } ?>>Personnel</option>
+            </select>
+        </div>
+
+        <button type="submit">Enregistrer les modifications</button>
+        <button type="button" onclick="location.href='accueil.php'">Annuler</button>
+    </form>
+</section>
+<?php } ?>
+
+
         <!-- TABLEAU DE BORD -->
         <section class="dashboard">
             <h2>Tableau de bord</h2>
@@ -149,7 +182,8 @@ if ($nbTotal > 0) {
             <div class="actions">
                 <button onclick="if (confirm('Terminer cette tâche ?')) 
                 { location.href='terminer_tache.php?id=<?= $tache["id"] ?>' }">Terminer</button>
-                <button>Modifier</button>
+                <button onclick="if (confirm('Voulez-vous modifier cette tâche ?'))
+                { location.href='accueil.php?modifier=<?= $tache["id"] ?>' }">Modifier</button>
                 <button onclick="if (confirm('Supprimer cette tâche ?')) 
                 { location.href='supprimer_tache.php?id=<?= $tache["id"] ?>' }">Supprimer</button>
             </div>
