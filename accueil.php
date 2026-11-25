@@ -110,7 +110,7 @@ if ($nbTotal > 0) {
 
                 <div class="card">
                     <h3>Progression</h3>
-                    <p>33 %</p>
+                    <p><?= $progression ?> %</p>
                 </div>
             </div>
         </section>
