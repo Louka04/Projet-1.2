@@ -7,6 +7,16 @@ $taches = $requete->fetchAll();
 $requete = $pdo->query("SELECT * FROM taches WHERE statut = 'terminee'");
 $tachesTerminees = $requete->fetchAll();
 
+$nbRestantes = count($taches);
+$nbTerminees = count($tachesTerminees);
+$nbTotal = $nbRestantes + $nbTerminees;
+
+if ($nbTotal > 0) {
+    $progression = round($nbTerminees * 100 / $nbTotal);
+} else {
+    $progression = 0;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -85,17 +95,17 @@ $tachesTerminees = $requete->fetchAll();
             <div class="stats">
                 <div class="card">
                     <h3>Total</h3>
-                    <p>3</p>
+                    <p><?= $nbTotal ?></p>
                 </div>
 
                 <div class="card">
                     <h3>Terminées</h3>
-                    <p>1</p>
+                    <p><?= $nbTerminees ?></p>
                 </div>
 
                 <div class="card">
                     <h3>Restantes</h3>
-                    <p>2</p>
+                    <p><?= $nbRestantes ?></p>
                 </div>
 
                 <div class="card">
