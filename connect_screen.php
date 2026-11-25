@@ -2,14 +2,21 @@
 
 session_start();
 
+if (isset($_SESSION["user_id"]) === true) {
+    header("Location: accueil.php");
+    exit;
+}
+
 require_once "connexion.php";
 
+$se_souvenir = false;
 $erreurs = [];
 $mail = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mail = trim($_POST["mail"] ?? "");
     $password = $_POST["password"] ?? "";
+    $se_souvenir = isset($_POST["se_souvenir"]);
 
     if (empty($mail)) {
         $erreurs[] = "Veuillez saisir votre adresse mail";
@@ -26,6 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($utilisateur === false || !password_verify($password, $utilisateur["password"])) {
             $erreurs[] = "Mail ou mot de passe incorrect.";
         } else {
+            if ($se_souvenir === true) {
+                $jeton = bin2hex(random_bytes(32));
+                $requete = $pdo->prepare("UPDATE utilisateurs SET jeton_souvenir = :jeton WHERE id = :id");
+                $requete->execute([
+                    "jeton" => $jeton,
+                    "id" => $utilisateur["id"],
+                ]);
+            }
+
             session_regenerate_id(true);
             $_SESSION["user_id"] = $utilisateur["id"];
             $_SESSION["user_name"] = $utilisateur["user_name"];
@@ -117,6 +133,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="connect_container">
                         <img src="./img/Cadenat.png" alt="logo mdp">
                         <input type="password" name="password" id="mdp" placeholder="Mot de passe">
+                    </div>
+                    <div class="checkbox">
+                        <img src="./img/se-souvenir.svg" alt="logo se souvenir de moi">
+                        <input type="checkbox" name="se_souvenir" id="checkbox">
+                        <p>Se souvenir de moi dans ce navigateur ?</p>
                     </div>
                     <div class="connect">
                         <input type="submit" class="connect_div" name="connect" id="connect" value="Se connecter &#10132;">

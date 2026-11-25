@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bleu" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a90ff"/>
+      <stop offset="1" stop-color="#165cf9"/>
+    </linearGradient>
+  </defs>
+  <!-- Utilisateur (tête + épaules) -->
+  <circle cx="26" cy="21" r="10" fill="none" stroke="url(#bleu)" stroke-width="4.5"/>
+  <path d="M7 54 C7 41 15 35 26 35 C31 35 35 36.5 38 39" fill="none" stroke="url(#bleu)" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Badge : case cochée = « on se souvient de toi » -->
+  <rect x="35" y="38" width="23" height="23" rx="7" fill="#121e31" stroke="url(#bleu)" stroke-width="4"/>
+  <path d="M41 49.5 L45.5 54 L52.5 45.5" fill="none" stroke="url(#bleu)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

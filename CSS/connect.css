@@ -236,6 +236,31 @@ body {
   color: #5f92ff;
 }
 
+/* SE SOUVENIR DE MOI */
+
+.checkbox {
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.checkbox img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+}
+
+#checkbox {
+  margin: 0;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.checkbox p {
+  margin: 0;
+}
+
 /* RESPONSIVE PC */
 @media screen and (max-width: 940px) {
   body {

@@ -1,0 +1,2 @@
+ALTER TABLE `utilisateurs`
+ADD COLUMN `jeton_souvenir` VARCHAR(64) NULL DEFAULT NULL;
