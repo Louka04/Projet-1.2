@@ -2,12 +2,25 @@
 
 session_start();
 
-if (isset($_SESSION["user_id"]) === true) {
-    header("Location: accueil.php");
-    exit;
-}
+// if (isset($_SESSION["user_id"]) === true) {
+//     header("Location: accueil.php");
+//     exit;
+// }
 
 require_once "connexion.php";
+
+if (isset($_COOKIE["jeton_souvenir"])) {
+    $requete = $pdo->prepare("SELECT * FROM utilisateurs WHERE jeton_souvenir = :jeton_souvenir");
+    $requete->execute(["jeton_souvenir" => $_COOKIE["jeton_souvenir"]]);
+    $utilisateur = $requete->fetch(PDO::FETCH_ASSOC);
+    if ($utilisateur !== false) {
+        session_regenerate_id(true);
+        $_SESSION["user_id"] = $utilisateur["id"];
+        $_SESSION["user_name"] = $utilisateur["user_name"];
+        header("Location: accueil.php");
+        exit;
+    }
+}
 
 $se_souvenir = false;
 $erreurs = [];
@@ -40,6 +53,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     "jeton" => $jeton,
                     "id" => $utilisateur["id"],
                 ]);
+                $optionCookie = [
+                    // Date d'expiration : maintenant + 30 jours (60 s x 60 min x 24 h x 30 j)
+                    "expires" => time() + 60 * 60 * 24 * 30,
+                    // Le cookie est envoyé pour toutes les pages du site
+                    "path" => "/",
+                    // Le JavaScript de la page ne peut pas lire le cookie (protège contre le vol du jeton)
+                    "httponly" => true,
+                    // Les autres sites ne peuvent pas envoyer ce cookie à ta place
+                    "samesite" => "Lax",
+                ];
+
+                setcookie("jeton_souvenir", $jeton, $optionCookie);
             }
 
             session_regenerate_id(true);
