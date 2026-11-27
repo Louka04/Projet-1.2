@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: connect_screen.php");
+    exit;
+}
+
 require_once "connexion.php";
 
 $requete = $pdo->query("SELECT * FROM taches WHERE statut = 'en_cours'");

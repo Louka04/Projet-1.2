@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: connect_screen.php");
+    exit;
+}
 
 require_once "connexion.php";
 
@@ -13,14 +19,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Titre ou catégorie invalide.");
     }
 
-    $sql = "INSERT INTO taches (titre, categorie)
-            VALUES (:titre, :categorie)";
+    $sql = "INSERT INTO taches (titre, categorie, user_id)
+            VALUES (:titre, :categorie, :user_id)";
 
     $requete = $pdo->prepare($sql);
 
     $requete->execute([
         "titre" => $titre,
-        "categorie" => $categorie
+        "categorie" => $categorie, 
+        "user_id" => $SESSION["user_id"]
     ]);
 
     header("Location: accueil.php");
