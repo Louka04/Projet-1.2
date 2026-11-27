@@ -8,10 +8,12 @@ if (!isset($_SESSION["user_id"])) {
 
 require_once "connexion.php";
 
-$requete = $pdo->query("SELECT * FROM taches WHERE statut = 'en_cours'");
+$requete = $pdo->prepare("SELECT * FROM taches WHERE statut = 'en_cours' AND user_id = :user_id");
+$requete->execute(["user_id" => $_SESSION["user_id"]]);
 $taches = $requete->fetchAll();
 
-$requete = $pdo->query("SELECT * FROM taches WHERE statut = 'terminee'");
+$requete = $pdo->prepare("SELECT * FROM taches WHERE statut = 'terminee' AND user_id = :user_id");
+$requete->execute(["user_id" => $_SESSION["user_id"]]);
 $tachesTerminees = $requete->fetchAll();
 
 $nbRestantes = count($taches);
@@ -25,9 +27,18 @@ if ($nbTotal > 0) {
 }
 
 if (isset($_GET["modifier"])) {
-    $requete = $pdo->prepare("SELECT * FROM taches WHERE id = :id");
-    $requete->execute(["id" => $_GET["modifier"]]);
+    $requete = $pdo->prepare("SELECT * FROM taches WHERE id = :id AND user_id = :user_id" );
+    $requete->execute([
+        "id" => $_GET["modifier"],
+        "user_id" => $_SESSION["user_id"]
+    ]);
     $tacheAModifier = $requete->fetch();
+    
+     if (!$tacheAModifier) {
+        header("Location: accueil.php");
+        exit;
+    }
+    
     }
 
 ?>
